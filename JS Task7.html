@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21BCE9012 - JS Task-7</title>
+</head>
+<body>
+    <form>
+        <img id="myimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7BMvOJML1pHli-PfS0-1ggRVQBa5KDcVvQA&usqp=CAU" />
+        <center>
+            <h1 style="color: #4B0082 ;">Click the following buttons to handle animation</h1>
+            <input type="button" value="Start" onclick="startAnimation();" />
+            <input type="button" value="Stop" onclick="stopAnimation();" />
+        </center>
+    </form>
+    <script>
+        var img = null;
+        var animationInterval = null;
+
+        function init() {
+            img = document.getElementById('myimg');
+            img.style.position = 'relative';
+            img.style.left = '50px';
+        }
+
+        function startAnimation() {
+            if (animationInterval === null) {
+                animationInterval = setInterval(moveRight, 100);
+            }
+        }
+
+        function stopAnimation() {
+            clearInterval(animationInterval);
+            animationInterval = null;
+        }
+
+        function moveRight() {
+            img.style.left = parseInt(img.style.left) + 5 + 'px';
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

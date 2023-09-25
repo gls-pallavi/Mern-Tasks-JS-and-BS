@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21BCE9012 - JS Task-4</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showDate()">Show date</button> <br><br>
+    <button onclick="showTime()">Show time</button>
+    <p id="output"></p>
+
+    <script>
+        function showDate() {
+            const currentDate = new Date();
+            const options = { day: '2-digit', month: 'long', year: 'numeric' };
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+            document.getElementById("output").textContent = formattedDate;
+        }
+
+        function showTime() {
+            const currentDate = new Date();
+            const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+            const formattedTime = currentDate.toLocaleString('en-US', options);
+            document.getElementById("output").textContent = formattedTime;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21BCE9012 - JS Task-5</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .label {
+            flex: 1;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .input-field {
+            flex: 2;
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 100px;
+        }
+
+        .error {
+            border: 1px solid red;
+        }
+
+        .error-message {
+            color: red;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm()" novalidate>
+        <div class="form-group">
+            <label class="label" for="name">Name:</label>
+            <input class="input-field" type="text" id="name" name="name" required>
+            <span class="error-message" id="name-error"></span>
+        </div>
+        
+        <div class="form-group">
+            <label class="label" for="email">Email:</label>
+            <input class="input-field" type="email" id="email" name="email" required>
+            <span class="error-message" id="email-error"></span>
+        </div>
+        
+        <div class="form-group">
+            <label class="label" for="website">Website:</label>
+            <input class="input-field" type="url" id="website" name="website" required>
+            <span class="error-message" id="website-error"></span>
+        </div>
+        
+        <div class="form-group">
+            <label class="label" for="message">Message:</label>
+            <textarea class="input-field" id="message" name="message" rows="4" required></textarea>
+            <span class="error-message" id="message-error"></span>
+        </div>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var website = document.getElementById("website").value;
+            var message = document.getElementById("message").value;
+
+            var hasError = false;
+
+            function showError(inputFieldId, errorMessage) {
+                document.getElementById(inputFieldId).classList.add("error");
+                document.getElementById(inputFieldId + "-error").textContent = errorMessage;
+            }
+
+            function clearError(inputFieldId) {
+                document.getElementById(inputFieldId).classList.remove("error");
+                document.getElementById(inputFieldId + "-error").textContent = "";
+            }
+
+            if (name.trim() === "") {
+                showError("name", "This field is required.");
+                hasError = true;
+            } else {
+                clearError("name");
+            }
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                showError("email", "A valid email address is required.");
+                hasError = true;
+            } else {
+                clearError("email");
+            }
+
+            var urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+            if (!urlPattern.test(website)) {
+                showError("website", "A valid URL is required.");
+                hasError = true;
+            } else {
+                clearError("website");
+            }
+
+            if (message.trim() === "") {
+                showError("message", "This is a required field.");
+                hasError = true;
+            } else {
+                clearError("message");
+            }
+
+            return !hasError;
+        }
+    </script>
+</body>
+</html>

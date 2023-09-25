@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21BCE9012 - JS Task-1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Reverse a Number</h1>
+        <input type="number" id="inputNumber" placeholder="Enter a number">
+        <button onclick="reverseNumber()">Reverse</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function reverseNumber() {
+            const inputElement = document.getElementById('inputNumber');
+            const inputValue = inputElement.value;
+
+            if (!isNaN(inputValue)) {
+                const reversedNumber = parseFloat(inputValue.toString().split('').reverse().join(''));
+                
+                document.getElementById('result').textContent = `Reversed Number: ${reversedNumber}`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter a valid number';
+            }
+        }
+        console.log(result);
+    </script>
+</body>
+</html>
